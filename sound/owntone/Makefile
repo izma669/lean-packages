@@ -8,15 +8,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=owntone
-PKG_VERSION:=28.5
+PKG_VERSION:=28.8
 PKG_RELEASE:=1
+PKG_REV:=85929dcaa87c71da52e589f9ad049afa41f9922b
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://github.com/owntone/owntone-server/releases/download/$(PKG_VERSION)/
-PKG_HASH:=c9ee0152dc488f782a25a68e72d24c109882bef3dd2914315fe499c8415fd898
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/owntone/owntone-server.git
+PKG_SOURCE_VERSION:=$(PKG_REV)
 
 PKG_FIXUP:=autoreconf
-PKG_USE_MIPS16:=0
+PKG_BUILD_FLAGS:=no-mips16
 PKG_INSTALL:=1
 
 PKG_MAINTAINER:=Espen Jürgensen <espenjurgensen+openwrt@gmail.com>
@@ -32,9 +35,10 @@ CATEGORY:=Sound
 TITLE:=iTunes (DAAP) server for Apple Remote and AirPlay
 URL:=https://github.com/owntone/owntone-server
 DEPENDS:=+libgpg-error +libgcrypt +libgdbm +zlib +libexpat +libunistring \
-	+libevent2 +libdaemon +confuse +alsa-lib +libffmpeg-full \
+	+libevent2 +libdaemon +libantlr3c +confuse +alsa-lib +libffmpeg-full \
 	+mxml +libavahi-client +sqlite3-cli +libplist +libcurl +libjson-c \
-	+libprotobuf-c +libgnutls +libsodium +libwebsockets +libuuid +libopus $(ICONV_DEPENDS)
+	+libprotobuf-c +libgnutls +libsodium +libwebsockets $(ICONV_DEPENDS) \
+	+libevent2-pthreads +libuuid +librt +libpthread
 endef
 
 define Package/owntone/description
@@ -54,8 +58,7 @@ CONFIGURE_ARGS += \
 	--disable-install_conf_file \
 	--disable-install_user \
 	--with-alsa \
-	--without-pulseaudio \
-	--without-libevent_pthreads
+	--without-pulseaudio
 
 TARGET_CFLAGS += $(FPIC)
 
