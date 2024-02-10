@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=owntone
-PKG_VERSION:=28.8
+PKG_VERSION:=28.9
 PKG_RELEASE:=1
 PKG_REV:=85929dcaa87c71da52e589f9ad049afa41f9922b
 
