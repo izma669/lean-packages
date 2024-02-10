@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=owntone
-PKG_VERSION:=28.8
+PKG_VERSION:=28.9
 PKG_RELEASE:=2
 
 # Git snapshot
