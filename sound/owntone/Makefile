@@ -41,7 +41,7 @@ CATEGORY:=Sound
 TITLE:=iTunes (DAAP) server for Apple Remote and AirPlay
 URL:=https://github.com/owntone/owntone-server
 DEPENDS:=+libuuid +librt +libpthread +libgpg-error +libgcrypt +libgdbm +zlib +libexpat +libunistring \
-	+libevent2 +libevent_pthreads +libdaemon +confuse +alsa-lib +libffmpeg-full \
+	+libevent2 +libdaemon +confuse +alsa-lib +libffmpeg-full \
 	+libxml2 +libavahi-client +sqlite3-cli +libplist +libcurl +libjson-c \
 	+libprotobuf-c +libgnutls +libsodium +libwebsockets +libuuid $(ICONV_DEPENDS)
 endef
